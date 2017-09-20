@@ -9,7 +9,7 @@
 @include('includes.form_errors')
 
  <div class="col-sm-3">
- 	<img src="{{$post->photo->file}}" class="img-responsive">
+ 	<img src="{!!asset($post->photo ? $post->photo->file : 'http://placehold.it/400x400' )!!}" alt="" class="img-responsive img-rounded">
  </div>
 
  <div class="col-sm-9">

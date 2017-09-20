@@ -113,7 +113,7 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostsCreateRequest $request, $id)
     {
         //
 
@@ -131,6 +131,7 @@ class AdminPostsController extends Controller
             $input['photo_id'] = $photo->id;
 
         }
+        
 
         Auth::user()->posts()->whereId($id)->first()->update($input);
 
