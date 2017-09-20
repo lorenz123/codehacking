@@ -3,6 +3,26 @@
 
 @section('content')
 
+	@if(Session::has('added_user'))
+		<div class="alert alert-success">
+		  <strong>{{session('added_user')}}!</strong> 
+		</div>
+	@endif
+
+	@if(Session::has('updated_user'))
+		<div class="alert alert-info">
+		  <strong>{{session('updated_user')}}!</strong> 
+		</div>
+	@endif
+
+	@if(Session::has('deleted_user'))
+		<div class="alert alert-danger">
+		  <strong>{{session('deleted_user')}}!</strong> 
+		</div>
+	@endif
+
+
+
 	<h1>Users</h1>
 	<table class="table table-hover">
 	    <thead>

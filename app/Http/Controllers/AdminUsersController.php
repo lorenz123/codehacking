@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\UsersEditRequest;
 use App\Photo;
 use App\Http\Requests\UsersRequest;
@@ -86,6 +87,8 @@ class AdminUsersController extends Controller
 
         User::create($input);
 
+        Session::flash('added_user', 'The user has been added');
+
         return redirect('/admin/users');
 
     }
@@ -163,6 +166,8 @@ class AdminUsersController extends Controller
 
         $user->update($input);
 
+        Session::flash('updated_user', 'The user has been updated');
+
         return redirect('admin/users');
 
     }
@@ -176,5 +181,15 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::findOrFail($id);
+
+        unlink(public_path() . $user->photo->file);
+
+        $user->delete();
+
+        Session::flash('deleted_user', 'The user has been deleted');
+
+        return redirect('admin/users');
+
     }
 }
