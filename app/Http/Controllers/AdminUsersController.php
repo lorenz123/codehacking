@@ -163,6 +163,8 @@ class AdminUsersController extends Controller
             $input['photo_id'] = $photo->id;
 
         }
+        
+        // unlink(public_path() . $user->photo->file);
 
         $user->update($input);
 

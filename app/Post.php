@@ -38,4 +38,11 @@ class Post extends Model
 
 	}
 
+
+	public function comments() {
+
+		return $this->hasMany('App\Comment', 'post_id');
+
+	}
+
 }
